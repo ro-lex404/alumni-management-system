@@ -9,7 +9,7 @@ function Dashboard(){
         <Navbar/>
             <div className="px-4">
             <h1 className="text-3xl font-bold text-center mt-8">Alumni Portal</h1>
-            <AlumniForm />
+            {/* <AlumniForm /> */}
             <AlumniList />
         </div>
         <Footer/>

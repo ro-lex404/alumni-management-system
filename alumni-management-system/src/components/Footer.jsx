@@ -1,11 +1,8 @@
-function Footer(){
-    return(
-        <>
-            <div className="bg-gray-800 text-gray-200 text-center">
-                Contact Us | ©2025
-            </div>
-        </>
-    )
-}
-
-export default Footer;
+export default function Footer() {
+    return (
+      <footer className="bg-gray-800 text-white text-center py-4">
+        © {new Date().getFullYear()} Alumni Network
+      </footer>
+    );
+  }
+  

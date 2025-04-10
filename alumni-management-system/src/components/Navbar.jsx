@@ -9,6 +9,7 @@ function Navbar(){
           <Link to="/" className="hover:text-blue-300">Home</Link>
           <Link to="/profile" className="hover:text-blue-300">Profile</Link>
           <Link to="/dashboard" className="hover:text-blue-300">Dashboard</Link>
+          <Link to="/JobOpenings" className="hover:text-blue-300">Jobs</Link>
         </div>
         <GoogleAuth />
         </nav>

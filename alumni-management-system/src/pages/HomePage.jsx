@@ -6,8 +6,9 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 function HomePage() {
   return (
     <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="bg-gray-300">
+      <div className="flex-grow bg-gray-100">
         <div className="text-3xl py-4 font-bold text-center text-gray-700">
           Meet Your Alumni!
         </div>
@@ -45,6 +46,7 @@ function HomePage() {
         </div>
       </div>
       <Footer/>
+    </div>
     </>
   );
 }

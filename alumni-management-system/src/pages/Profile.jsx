@@ -38,6 +38,8 @@ export default function Profile() {
   if (!formData) return <p className="text-center mt-10">Loading profile...</p>;
 
   return (
+    <>
+    <div className="flex flex-col min-h-screen">
     <form onSubmit={handleSave} className="max-w-md mx-auto mt-8 space-y-4 p-4 bg-white shadow rounded">
       <h2 className="text-xl font-bold text-center">Your Profile</h2>
       {["passingYear", "job", "specialization"].map((field) => (
@@ -52,5 +54,7 @@ export default function Profile() {
       ))}
       <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded w-full">Save</button>
     </form>
+    </div>
+    </>
   );
 }

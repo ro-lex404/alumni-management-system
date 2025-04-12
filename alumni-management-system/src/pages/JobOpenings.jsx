@@ -44,12 +44,12 @@ const JobOpenings = () => {
   const fetchJobs = async () => {
     const jobsCollection = collection(db, 'jobOpportunities');
     const jobSnapshot = await getDocs(jobsCollection);
-    const jobList = jobSnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
+    const jobList = jobSnapshot.docs
+      .map(doc => ({ id: doc.id, ...doc.data() }))
+      .sort((a, b) => b.timestamp?.seconds - a.timestamp?.seconds); // sort by time desc
     setJobs(jobList);
   };
+  
 
   const handleAddJob = async () => {
     const auth = getAuth();
@@ -160,7 +160,13 @@ const JobOpenings = () => {
               )}
               
               {job.timestamp && job.timestamp.seconds && (
-                <p><strong>Posted on:</strong> {new Date(job.timestamp.seconds * 1000).toLocaleDateString()}</p>
+                <p>
+                  <strong>Posted on:</strong>{" "}
+                  {new Date(job.timestamp.seconds * 1000).toLocaleString("en-IN", {
+                    dateStyle: "medium",
+                    timeStyle: "short"
+                  })}
+                </p>
               )}
             </li>
           ))}

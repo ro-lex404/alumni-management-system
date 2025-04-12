@@ -11,7 +11,8 @@ export default function Profile() {
     name:"",
     email:"",
     passingYear: "",
-    job: "",
+    role: "",
+    currentPosition: "",
     specialization: ""
   });
   const [loading, setLoading] = useState(true);
@@ -21,20 +22,22 @@ export default function Profile() {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
         alert("Please sign in to access your profile.");
-        navigate("/");
+        navigate("/");//Not signed in case
         return;
       }
 
-      const userRef = doc(db, "alumni", user.uid);
+      const userRef = doc(db, "alumni", user.uid);//To identify each user using uid provided by Firestore
       const docSnap = await getDoc(userRef);
 
+      //Autofill form after entering details once
       if (docSnap.exists()) {
         const data = docSnap.data();
         setFormData({
           name: data.name || "",
           email: data.email || "",
           passingYear: data.passingYear || "",
-          job: data.job || "",
+          role: data.role || "",
+          currentPosition: data.currentPosition || "",
           specialization: data.specialization || ""
         });
       }
@@ -51,48 +54,73 @@ export default function Profile() {
 
   const handleSave = async (e) => {
     e.preventDefault();
-
+  
     const user = auth.currentUser;
     if (!user) return;
-
+  
+    // Check if role is selected
+    if (!formData.role) {
+      alert("Please select your role (Student or Alumni) before saving.");
+      return;
+    }
+  
     const userRef = doc(db, "alumni", user.uid);
-
-    // Use setDoc with merge: true to update only changed fields
+  
     await setDoc(
       userRef,
       {
         name: formData.name,
         passingYear: formData.passingYear,
-        job: formData.job,
+        role: formData.role,
+        currentPosition: formData.currentPosition,
         specialization: formData.specialization
       },
-      { merge: true } // ✅ Keeps old data if not changed
+      { merge: true }
     );
-
+  
     alert("Profile updated!");
     navigate("/dashboard");
   };
+  
 
   if (loading) return <p className="text-center mt-10">Loading profile...</p>;
-
   return (
     <>
     <Navbar/>
-    <div className="flex flex-col min-h-screen">
+    {/*Form to check whether student or alumni*/}
+        <div className="flex flex-col min-h-screen">
+          {formData.role === "" && (//If role not entered already
+          <div className="mb-4">
+            <label className="block mb-2 font-medium">Are you a student or an alumni?</label>
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded"
+              required
+            >
+              <option value="">Select Role</option>
+              <option value="student">Student</option>
+              <option value="alumni">Alumni</option>
+            </select>
+          </div>
+        )}
+      {/*Form to update details if necessary */}
       <form
         onSubmit={handleSave}
         className="max-w-md mx-auto mt-8 space-y-4 p-4 bg-white shadow rounded"
       >
         <h2 className="text-xl font-bold text-center">Update Your Info</h2>
-        {["name","passingYear", "job", "specialization"].map((field) => (
+        {["name","passingYear", "currentPosition", "specialization"].map((field) => (
           <input
-            key={field}
-            name={field}
-            value={formData[field]}
-            onChange={handleChange}
-            placeholder={field[0].toUpperCase() + field.slice(1)}
-            className="w-full px-3 py-2 border rounded"
-          />
+          key={field}
+          name={field}
+          value={formData[field]}
+          onChange={handleChange}
+          placeholder={field[0].toUpperCase() + field.slice(1)}
+          className="w-full px-3 py-2 border rounded"
+          disabled={formData.role === "student" && field !== "name"} // students can't edit other fields
+        />        
         ))}
         <button
           type="submit"

@@ -44,11 +44,11 @@ export default function GoogleAuth() {
   };
 
   return user ? (
-    <div className="text-right">
+    <div className="text-right placeholder-amber-200 cursor-pointer">
       <img src={user.photoURL} className="inline w-10 h-10 rounded-full mr-2" alt="user" />
-      <button onClick={logout} className="bg-red-500 text-white px-3 py-1 rounded">Logout</button>
+      <button onClick={logout} className="hover:text-yellow-300 hover:bg-white/10  text-white px-3 py-1 rounded">Logout</button>
     </div>
   ) : (
-    <button onClick={login} className="bg-blue-600 text-white px-4 py-2 rounded">Sign in with Google</button>
+    <button onClick={login} className="hover:text-yellow-300 hover:bg-white/10 cursor-pointer  text-white px-4 py-2 rounded">Sign in with Google</button>
   );
 }

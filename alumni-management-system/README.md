@@ -1,12 +1,9 @@
-# React + Vite
+Alumni Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Made to help current students of a college connect with their alumni,
+helping to network better and discover new opportunities.
 
-Currently, two official plugins are available:
+Built using ReactJS and Tailwind CSS for styling purposes, 
+Firebase for the DB, Authentication and Hosting
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Live Demo @ https://alumni-management-1.web.app/

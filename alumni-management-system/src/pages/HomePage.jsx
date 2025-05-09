@@ -38,7 +38,7 @@ function HomePage() {
               { title: "Get Career Advice \n Discover job openings", emoji: "💡" },
               { title: "Post Jobs & Internships \n Update Jobs as they appear", emoji: "💼" }
             ].map((item, i) => (
-              <div key={i} className="bg-white shadow rounded-lg p-6 text-center whitespace-pre-line">
+              <div key={i} className="bg-white shadow-gray-400 rounded-lg p-6 text-center whitespace-pre-line">
                 <div className="text-4xl">{item.emoji}</div>
                 <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
               </div>

@@ -14,16 +14,18 @@ export default function AlumniList() {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 space-y-4">
-      {alumni.map(alum => (
+  <div className="max-w-2xl mx-auto mt-8 space-y-4">
+    {alumni
+      .filter(alum => alum.role === "alumni")
+      .map(alum => (
         <div key={alum.id} className="border p-4 rounded shadow">
           <h3 className="text-lg font-bold">{alum.name}</h3>
           <p>Email: {alum.email}</p>
-          <p>Passing Year: {alum.passingYear}</p>
-          <p>Job: {alum.job}</p>
-          <p>Specialization: {alum.specialization}</p>
+          <p>Passing Year: {alum.passingYear || "—"}</p>
+          <p>Job: {alum.currentPosition || "Not provided"}</p>
+          <p>Specialization: {alum.specialization || "Not provided"}</p>
         </div>
       ))}
-    </div>
-  );
+  </div>
+);
 }

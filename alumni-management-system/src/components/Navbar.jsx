@@ -14,7 +14,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="bg-gradient-to-r from-blue-800 to-orange-800 text-white px-4 py-4 w-full z-50 shadow relative">
+    <nav className="bg-blue-950 text-white px-4 py-4 w-full z-50 shadow relative">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold tracking-wide">AlumniConnect</h1>
         <button

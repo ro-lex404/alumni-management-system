@@ -33,16 +33,19 @@ function HomePage() {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-8xl max-h-xl mx-auto my-8 px-6">
-            {[
-              { title: "Explore Alumni \n Connect with Alumni", emoji: "🎓" },
-              { title: "Get Career Advice \n Discover job openings", emoji: "💡" },
-              { title: "Post Jobs & Internships \n Update Jobs as they appear", emoji: "💼" }
-            ].map((item, i) => (
-              <div key={i} className="bg-white shadow-gray-400 rounded-lg p-6 text-center whitespace-pre-line">
-                <div className="text-4xl">{item.emoji}</div>
-                <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
-              </div>
-            ))}
+          {[
+            { title: "Explore Alumni \n Connect with Alumni", emoji: "🎓" },
+            { title: "Get Career Advice \n Discover job openings", emoji: "💡" },
+            { title: "Post Jobs & Internships \n Update Jobs as they appear", emoji: "💼" }
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white shadow-lg shadow-gray-400 rounded-lg p-8 flex flex-col justify-center items-center text-center whitespace-pre-line min-h-[220px]"
+            >
+              <div className="text-4xl mb-2">{item.emoji}</div>
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+            </div>
+          ))}
           </div>
         </div>
         <Footer />

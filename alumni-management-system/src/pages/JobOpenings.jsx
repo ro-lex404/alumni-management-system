@@ -159,6 +159,10 @@ const JobOpenings = () => {
                 <p><strong>Posted by:</strong> {job.postedByName}</p>
               )}
               
+              {job.postedByEmail && (
+                <p><strong>E-Mail:</strong> {job.postedByEmail}</p>
+              )}
+
               {job.timestamp && job.timestamp.seconds && (
                 <p>
                   <strong>Posted on:</strong>{" "}
